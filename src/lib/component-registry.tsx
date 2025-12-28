@@ -1,15 +1,17 @@
 import type { ReactElement } from "react"
-import { WeddingCard, IndicAvatar, Navbar, Chat, JhoomarLoader, PaisleyDivider } from "@/components/shaily"
 import { Button } from "@/components/ui/button"
-
-// Import source code as raw text
-import weddingCardSource from "@/components/shaily/WeddingCard.tsx?raw"
-import indicAvatarSource from "@/components/shaily/IndicAvatar.tsx?raw"
+import {
+  weddingCardExample,
+  indicAvatarExample,
+  navbarExample,
+  chatExample,
+  jhoomarLoaderExample,
+  paisleyDividerExample,
+  swastikLoaderExample,
+  riverSliderExample,
+  threeDCardExample,
+} from "@/components/shaily/examples"
 import buttonSource from "@/components/ui/button.tsx?raw"
-import navbarSource from "@/components/shaily/Navbar.tsx?raw"
-import chatSource from "@/components/shaily/Chat.tsx?raw"
-import jhoomarLoaderSource from "@/components/shaily/JhoomarLoader.tsx?raw"
-import paisleyDividerSource from "@/components/shaily/PaisleyDivider.tsx?raw"
 
 export interface ComponentMetadata {
   id: string
@@ -31,195 +33,82 @@ export const shailyComponents: ComponentRegistryItem[] = [
     name: "Wedding Card",
     category: "Cards",
     description: "A beautiful Indian-style wedding invitation card",
-    component: <WeddingCard />,
-    code: `import { WeddingCard } from "@/components/shaily"
-
-export function WeddingCardExample() {
-  return <WeddingCard />
-}`,
-    sourceCode: weddingCardSource,
+    component: weddingCardExample.component,
+    code: weddingCardExample.code,
+    sourceCode: weddingCardExample.sourceCode,
   },
   {
     id: "indic-avatar",
     name: "Indic Avatar",
     category: "Display",
     description: "A premium Indian-style avatar component that celebrates cultural diversity.",
-    component: (
-      <div className="flex flex-col items-center gap-24 p-20 bg-white dark:bg-zinc-950 rounded-[3rem] border border-zinc-200 dark:border-zinc-800 shadow-sm max-w-2xl mx-auto w-full">
-        <IndicAvatar 
-          region="kashmir" 
-          variant="royal"
-          name="Zoya Ahmed" 
-          caption="Srinagar, JK"
-          fallback="ZA"
-          image="/avatars/kashmir.jpeg"
-        />
-        <IndicAvatar 
-          region="punjab" 
-          variant="saffron"
-          name="Aman Singh" 
-          caption="Amritsar, PB"
-          fallback="AS"
-          image="/avatars/punjab.jpeg"
-        />
-        <IndicAvatar 
-          region="bengal" 
-          variant="corporate" 
-          name="Sayali Chakraborty" 
-          caption="Kolkata, WB"
-          fallback="SC"
-          image="/avatars/bengal.jpeg"
-        />
-        <IndicAvatar 
-          region="south" 
-          variant="classic" 
-          name="Meera Iyer" 
-          caption="Chennai, TN"
-          fallback="MI"
-          image="/avatars/south.jpeg"
-        />
-      </div>
-    ),
-    code: `import { IndicAvatar } from "@/components/shaily"
-
-export function IndicAvatarExample() {
-  return (
-    <div className="flex flex-col items-center gap-16">
-      <IndicAvatar 
-        region="kashmir" 
-        variant="royal"
-        name="Zoya Ahmed" 
-        caption="Srinagar, JK"
-        fallback="ZA"
-        image="/avatars/kashmir.jpeg"
-      />
-      <IndicAvatar 
-        region="punjab" 
-        variant="saffron"
-        name="Aman Singh" 
-        caption="Amritsar, PB"
-        fallback="AS"
-        image="/avatars/punjab.jpeg"
-      />
-      <IndicAvatar 
-        region="bengal" 
-        variant="corporate" 
-        name="Sayali Chakraborty" 
-        caption="Kolkata, WB"
-        fallback="SC"
-        image="/avatars/bengal.jpeg"
-      />
-      <IndicAvatar 
-        region="south" 
-        variant="classic" 
-        name="Meera Iyer" 
-        caption="Chennai, TN"
-        fallback="MI"
-        image="/avatars/south.jpeg"
-      />
-    </div>
-  )
-}`,
-    sourceCode: indicAvatarSource,
+    component: indicAvatarExample.component,
+    code: indicAvatarExample.code,
+    sourceCode: indicAvatarExample.sourceCode,
   },
   {
     id: "navbar",
     name: "Navbar",
     category: "Navigation",
     description: "A premium Indian-style navbar component that celebrates cultural diversity.",
-    component: (
-      <Navbar
-        brand="SANSKRITI"
-        navItems={[
-          { label: "Home", href: "/" },
-          { label: "About", href: "/about" },
-          { label: "Services", href: "/services" },
-          { label: "Contact", href: "/contact" },
-        ]}
-      />
-    ),
-    code: `
-    import { Navbar } from "@/components/shaily"
-
-    export function NavbarExample() {
-      return (
-        <Navbar
-          brand="SANSKRITI"
-          navItems={[
-            { label: "Home", href: "/" },
-            { label: "About", href: "/about" },
-            { label: "Services", href: "/services" },
-            { label: "Portfolio", href: "/portfolio" },
-            { label: "Contact", href: "/contact" },
-          ]}
-        />
-      )
-    }
-  `,
-    sourceCode: navbarSource,
+    component: navbarExample.component,
+    code: navbarExample.code,
+    sourceCode: navbarExample.sourceCode,
   },
   {
     id: "chat",   
     name: "Chat",
     category: "Communication",
     description: "A premium Indian-style chat component that celebrates cultural diversity.",
-    component: <Chat />,
-    code: `import { Chat } from "@/components/shaily"
-
-    export function ChatExample() {
-      return <Chat />
-    }`,
-    sourceCode: chatSource,
+    component: chatExample.component,
+    code: chatExample.code,
+    sourceCode: chatExample.sourceCode,
   },
   {
     id: "jhoomar-loader",
     name: "Jhoomar Loader",
     category: "Loading",
     description: "A premium Indian-style loader component that celebrates cultural diversity.",
-    component: (
-      <div className="flex items-center justify-center gap-8">
-        <JhoomarLoader size="sm" />
-        <JhoomarLoader size="md" />
-        <JhoomarLoader size="lg" />
-      </div>
-    ),
-    code: `
-import { JhoomarLoader } from "@/components/shaily";
-
-export function JhoomarLoaderExample() {
-  return (
-  <JhoomarLoader size="sm" />
-  <JhoomarLoader size="md" />
-  <JhoomarLoader size="lg" />
-  )
-}`,
-  sourceCode: jhoomarLoaderSource,
+    component: jhoomarLoaderExample.component,
+    code: jhoomarLoaderExample.code,
+    sourceCode: jhoomarLoaderExample.sourceCode,
  },
  {
   id: "paisley-divider",
   name: "Paisley Divider",
   category: "Layout",
   description: "A premium Indian-style divider component that celebrates cultural diversity.",
-  component: (
-    <div className="flex flex-col gap-6 w-full">
-      <PaisleyDivider variant="simple" />
-      <PaisleyDivider variant="ornate" />
-      <PaisleyDivider variant="dots" />
-    </div>
-  ),
-  code: `
-  import { PaisleyDivider } from "@/components/shaily";
-
-  export function PaisleyDividerExample() {
-  return (
-<PaisleyDivider variant="simple" />
-<PaisleyDivider variant="ornate" />
-<PaisleyDivider variant="dots" />
-  )
-}
-`,
-  sourceCode: paisleyDividerSource,
+    component: paisleyDividerExample.component,
+    code: paisleyDividerExample.code,
+    sourceCode: paisleyDividerExample.sourceCode,
  },
+ {
+  id: "swastik-loader",
+  name: "Swastik Loader",
+  category: "Loading",
+  description: "A premium Indian-style loader component that celebrates cultural diversity.",
+  component: swastikLoaderExample.component,
+  code: swastikLoaderExample.code,
+  sourceCode: swastikLoaderExample.sourceCode,
+ },
+ {
+  id: "river-slider",
+  name: "River Slider",
+  category: "Display",
+  description: "A premium Indian-style slider component that celebrates cultural diversity.",
+  component: riverSliderExample.component,
+  code: riverSliderExample.code,
+  sourceCode: riverSliderExample.sourceCode,
+ },
+ {
+  id: "three-d-card",
+  name: "Three D Card",
+  category: "Cards",
+  description: "A premium Indian-style card component that celebrates cultural diversity.",
+  component: threeDCardExample.component,
+  code: threeDCardExample.code,
+  sourceCode: threeDCardExample.sourceCode,
+ }
 ]
 
 // Registry of UI components (from components/ui)

@@ -10,116 +10,113 @@ interface NavbarProps {
   brand?: string;
 }
 
-export const Navbar = function ({
+export function Navbar({
   navItems = [],
   brand = "SANSKRITI",
 }: NavbarProps) {
   return (
-    <nav className="relative w-full overflow-hidden bg-[#5b0f1b] text-[#f7e7b3]">
-      {/* TEXTURE */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,215,150,0.08),_transparent_55%)]" />
+    <nav className="relative w-full bg-[#5b0f1b] text-[#f7e7b3] overflow-hidden">
+      {/* Manuscript texture */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,215,150,0.08),_transparent_65%)]" />
 
-      {/* TOP ORNAMENT BORDER */}
-      <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent" />
+      {/* Top gold frame */}
+      <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent" />
 
-      {/* JHOOMAR */}
-      <Jhoomar />
-
-      {/* MAIN BAR */}
-      <div className="relative z-10 flex items-center justify-between px-12 py-10">
-        {/* BRAND */}
-        <div className="text-3xl tracking-[0.3em] font-semibold text-[#f3d37a]">
+      {/* Main bar */}
+      <div className="relative z-10 flex items-center justify-between px-10 h-[72px]">
+        {/* Brand */}
+        <div className="text-xl tracking-[0.35em] font-semibold text-[#f3d37a]">
           {brand}
         </div>
 
-        {/* NAV ITEMS */}
-        <ul className="flex gap-12 text-sm uppercase tracking-widest">
+        {/* Nav items */}
+        <ul className="flex gap-12 text-xs uppercase tracking-widest">
           {navItems.map((item) => (
-            <li key={item.href} className="relative">
+            <li key={item.href} className="relative cursor-pointer group">
               <a
                 href={item.href}
-                className="hover:text-white transition-all duration-300
-                  after:absolute after:left-0 after:-bottom-2 after:h-[1px]
-                  after:w-0 after:bg-[#d4af37]
-                  hover:after:w-full after:transition-all"
+                className="transition-colors duration-300 hover:text-white cursor-pointer"
               >
                 {item.label}
               </a>
+
+              {/* Underline */}
+              <span className="absolute left-1/2 -bottom-2 h-px w-0 bg-[#d4af37] transition-all duration-300 group-hover:w-full -translate-x-1/2" />
             </li>
           ))}
         </ul>
 
-        {/* SEARCH */}
-        <div className="relative">
-          <input
-            placeholder="Search…"
-            className="bg-[#2a060b] text-sm px-5 py-2 rounded-full
-                       border border-[#8c6b2f]
-                       focus:outline-none focus:ring-1 focus:ring-[#d4af37]"
-          />
+        {/* Search */}
+        <input
+          placeholder="Search…"
+          className="bg-[#2a060b] text-xs px-4 py-2 rounded-full
+                     border border-[#8c6b2f]/70
+                     focus:outline-none focus:ring-1 focus:ring-[#d4af37]"
+        />
+      </div>
+
+      {/* Floor platform */}
+      <div className="relative h-10 mt-2">
+        <div className="absolute inset-x-0 top-0 h-px bg-[#d4af37]/60" />
+
+        {/* Diyas */}
+        <div className="absolute inset-x-0 top-2 flex justify-center gap-16">
+          {navItems.map((_, i) => (
+            <Diya key={i} delay={i * 0.3} />
+          ))}
         </div>
       </div>
 
-      {/* BOTTOM DECORATIVE BORDER */}
-      <DecorativeBorder />
-
-      {/* BOTTOM GRADIENT */}
-      <div className="h-4 bg-gradient-to-b from-[#3a0a12] to-transparent" />
+      {/* Bottom glow */}
+      <div className="h-6 bg-gradient-to-b from-[#3a0a12] to-transparent" />
     </nav>
   );
 }
 
-function Jhoomar() {
-    return (
+/* ---------------- */
+/* Diya Component  */
+/* ---------------- */
+
+const flameVariants = {
+  rest: {
+    opacity: [0.6, 1, 0.7],
+    y: 0,
+    scaleY: 1,
+  },
+  hover: {
+    opacity: [0.7, 1, 0.85],
+    y: -10,
+    scaleY: 1.25,
+  },
+};
+
+function Diya({ delay = 0 }: { delay?: number }) {
+  return (
+    <motion.div
+      className="relative group cursor-pointer"
+      initial="rest"
+      animate="rest"
+      whileHover="hover"
+    >
+      {/* Flame */}
       <motion.div
-        className="absolute left-1/2 top-0 z-20 -translate-x-1/2 pointer-events-none"
-        initial={{ y: -20 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-      >
-        {/* Center Jewel */}
-        <div className="relative flex flex-col items-center">
-          <motion.div
-            animate={{ rotate: [0, 1, -1, 0] }}
-            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-            className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-900 rounded-full border-4 border-[#d4af37] shadow-xl"
-          />
-  
-          {/* Chains */}
-          <div className="mt-3 flex gap-4">
-            {Array.from({ length: 9 }).map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{ rotate: [0, 2, -2, 0] }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 4 + i * 0.3,
-                  ease: "easeInOut",
-                }}
-                className="flex flex-col items-center"
-              >
-                <div className="w-[2px] h-16 bg-gradient-to-b from-[#d4af37] to-transparent" />
-                <div className="w-3 h-3 rounded-full bg-[#d4af37] shadow-md" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-    );
-  }
-  
-  function DecorativeBorder() {
-    return (
-      <div className="relative h-6 overflow-hidden">
-        <div className="absolute inset-0 flex justify-center gap-6">
-          {Array.from({ length: 18 }).map((_, i) => (
-            <span
-              key={i}
-              className="w-2 h-2 rounded-full bg-[#d4af37] opacity-80"
-            />
-          ))}
-        </div>
-      </div>
-    );
-  }
-  
+        className="absolute left-1/2 -top-3 w-2 h-3 bg-gradient-to-t from-orange-400 to-yellow-200 rounded-full blur-[1px]"
+        variants={flameVariants}
+        transition={{
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 2,
+          ease: "easeInOut",
+          delay,
+        }}
+        style={{ transform: "translateX(-50%)" }}
+      />
+
+      {/* Bowl */}
+      <div className="w-6 h-2 bg-[#d4af37] rounded-b-full shadow-md" />
+
+      {/* Glow */}
+      <div className="absolute inset-0 rounded-full bg-[#d4af37]/30 blur-md" />
+    </motion.div>
+  );
+}

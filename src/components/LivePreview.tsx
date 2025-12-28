@@ -29,7 +29,7 @@ export default function LivePreview({ componentId }: LivePreviewProps) {
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback} key={componentId}>
-      <div className="w-full h-full flex items-center justify-center">
+        <div className="w-full h-full flex items-center justify-center">
         {componentItem.component}
       </div>
     </ErrorBoundary>
