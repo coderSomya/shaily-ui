@@ -1,5 +1,5 @@
 import type { ReactElement } from "react"
-import { WeddingCard, IndicAvatar, Navbar, Chat } from "@/components/shaily"
+import { WeddingCard, IndicAvatar, Navbar, Chat, JhoomarLoader, PaisleyDivider } from "@/components/shaily"
 import { Button } from "@/components/ui/button"
 
 // Import source code as raw text
@@ -8,6 +8,8 @@ import indicAvatarSource from "@/components/shaily/IndicAvatar.tsx?raw"
 import buttonSource from "@/components/ui/button.tsx?raw"
 import navbarSource from "@/components/shaily/Navbar.tsx?raw"
 import chatSource from "@/components/shaily/Chat.tsx?raw"
+import jhoomarLoaderSource from "@/components/shaily/JhoomarLoader.tsx?raw"
+import paisleyDividerSource from "@/components/shaily/PaisleyDivider.tsx?raw"
 
 export interface ComponentMetadata {
   id: string
@@ -169,6 +171,55 @@ export function IndicAvatarExample() {
     }`,
     sourceCode: chatSource,
   },
+  {
+    id: "jhoomar-loader",
+    name: "Jhoomar Loader",
+    category: "Loading",
+    description: "A premium Indian-style loader component that celebrates cultural diversity.",
+    component: (
+      <div className="flex items-center justify-center gap-8">
+        <JhoomarLoader size="sm" />
+        <JhoomarLoader size="md" />
+        <JhoomarLoader size="lg" />
+      </div>
+    ),
+    code: `
+import { JhoomarLoader } from "@/components/shaily";
+
+export function JhoomarLoaderExample() {
+  return (
+  <JhoomarLoader size="sm" />
+  <JhoomarLoader size="md" />
+  <JhoomarLoader size="lg" />
+  )
+}`,
+  sourceCode: jhoomarLoaderSource,
+ },
+ {
+  id: "paisley-divider",
+  name: "Paisley Divider",
+  category: "Layout",
+  description: "A premium Indian-style divider component that celebrates cultural diversity.",
+  component: (
+    <div className="flex flex-col gap-6 w-full">
+      <PaisleyDivider variant="simple" />
+      <PaisleyDivider variant="ornate" />
+      <PaisleyDivider variant="dots" />
+    </div>
+  ),
+  code: `
+  import { PaisleyDivider } from "@/components/shaily";
+
+  export function PaisleyDividerExample() {
+  return (
+<PaisleyDivider variant="simple" />
+<PaisleyDivider variant="ornate" />
+<PaisleyDivider variant="dots" />
+  )
+}
+`,
+  sourceCode: paisleyDividerSource,
+ },
 ]
 
 // Registry of UI components (from components/ui)
